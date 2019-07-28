@@ -110,7 +110,7 @@ function addValue(v){
 
 function readTemp(){
     let timeStart = new Date().getTime();
-    let fileContent = fs.readFileSync(deviceFile).toString();
+    let fileContent = fs.readFileSync(config.deviceFile).toString();
     if (!fileContent) {
         console.log('Read failed at ' + new Date().toString());
         return;
