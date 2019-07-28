@@ -40,12 +40,19 @@ var daily  = {
     file: ''
 };
 
+daily.key  = getDailyKey();
+daily.file = config.DATA_DIR + '/' + key + '.json'
+
 if (!fs.existsSync(config.dataDir)) {
     fs.mkdirSync(config.dataDir);
 }
 
 if (fs.existsSync(config.backupFile)) {
     values = JSON.parse(fs.readFileSync(config.backupFile));
+}
+
+if (fs.existsSync(daily.file)) {
+    daily.values = JSON.parse(fs.readFileSync(daily.file));
 }
 
 app.get('/', function (req, res) {
@@ -132,10 +139,7 @@ setTimeout(backup, config.backupInterval);
 readTemp();
 
 process.on('SIGINT', (code) => {
-    fs.writeFileSync(
-        config.backupFile,
-        JSON.stringify(valuesMap)
-    );
+    backup();
     console.log('Process exit.')
     process.exit('SIGINT');
 });
