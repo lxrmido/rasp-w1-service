@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var config = {
-    servicePort: process.env.SERIVCE_PORT || 3000,
+    servicePort: process.env.SERVICE_PORT || 3000,
     dataDir: process.env.DATA_DIR || 'data',
     backupFile: process.env.BACKUP_FILE || 'data/values.json',
     backupInterval: parseInt(process.env.BACKUP_INTERVAL || 60000),
