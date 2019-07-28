@@ -41,7 +41,7 @@ var daily  = {
 };
 
 daily.key  = getDailyKey();
-daily.file = config.DATA_DIR + '/' + daily.key + '.json'
+daily.file = config.dataDir + '/' + daily.key + '.json'
 
 if (!fs.existsSync(config.dataDir)) {
     fs.mkdirSync(config.dataDir);
@@ -107,7 +107,7 @@ function addValue(v){
     let key = getDailyKey();
     if (key != daily.key) {
         backupDaily();
-        daily.file = config.DATA_DIR + '/' + key + '.json';
+        daily.file = config.dataDir + '/' + key + '.json';
         daily.key = key;
         daily.values.length = 0;
     }
@@ -131,7 +131,7 @@ function readTemp(){
     current = temp;
     addValue(temp);
     console.log('Read at ' + new Date().toString() + ', time cost: ' + (updated - timeStart) + 'ms');
-    console.log('Temp: ' + temp + ', values length ' + values.length + ', daily length' + daily.values.length);
+    console.log('Temp: ' + temp + ', values length ' + values.length + ', daily length ' + daily.values.length);
     setTimeout(readTemp, config.readInterval);
 }
 
