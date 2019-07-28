@@ -81,7 +81,7 @@ function backup(){
 }
 
 function backupDaily(){
-    if (daiy.file.length) {
+    if (daily.file.length) {
         return fs.writeFileSync(daily.file, JSON.stringify(daily.values));
     }
     return false;
@@ -132,7 +132,7 @@ function readTemp(){
     addValue(temp);
     console.log('Read at ' + new Date().toString() + ', time cost: ' + (updated - timeStart) + 'ms');
     console.log('Temp: ' + temp + ', values length ' + values.length + ', daily length' + daily.values.length);
-    setTimeout(readTemp, config.READ_INTERVAL);
+    setTimeout(readTemp, config.readInterval);
 }
 
 setTimeout(backup, config.backupInterval);
