@@ -14,7 +14,7 @@ var config = {
     backupInterval: parseInt(process.env.BACKUP_INTERVAL || 60000),
     readInterval: parseInt(process.env.READ_INTERVAL || 10000),
     readLimit: parseInt(process.env.READ_LIMIT || 8640),
-    deviceDir: provess.env.DEVICE_DIR || "/sys/bus/w1/devices/",
+    deviceDir: process.env.DEVICE_DIR || "/sys/bus/w1/devices/",
     deviceFile: process.env.DEVICE
 };
 
