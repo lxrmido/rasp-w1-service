@@ -50,7 +50,7 @@ if (fs.existsSync(config.backupFile)) {
 
 app.get('/', function (req, res) {
     res.send({
-        updated: updated
+        updated: updated,
         value: current
     });
 });
@@ -129,6 +129,7 @@ function readTemp(){
 }
 
 setTimeout(backup, config.backupInterval);
+readTemp();
 
 process.on('SIGINT', (code) => {
     fs.writeFileSync(
