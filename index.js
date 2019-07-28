@@ -41,7 +41,7 @@ var daily  = {
 };
 
 daily.key  = getDailyKey();
-daily.file = config.DATA_DIR + '/' + key + '.json'
+daily.file = config.DATA_DIR + '/' + daily.key + '.json'
 
 if (!fs.existsSync(config.dataDir)) {
     fs.mkdirSync(config.dataDir);
